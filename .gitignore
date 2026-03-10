@@ -32,3 +32,11 @@ dist/
 
 # VSCode
 .vscode/
+
+# Trained models
+data/models/
+*.joblib
+*.pkl
+*.h5
+*.pt
+*.onnx
