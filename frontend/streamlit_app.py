@@ -18,6 +18,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 import pandas as pd
 import streamlit as st
+import os
+
+BACKEND_URL = os.getenv(
+    "BACKEND_URL",
+    "https://klassify-1.onrender.com"
+)
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
