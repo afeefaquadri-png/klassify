@@ -1,0 +1,13 @@
+{
+  "run_id": "c49db6ba444e",
+  "experiment": "default_experiment",
+  "model_key": "gradient_boosting",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmp_dykaal_.csv",
+  "status": "RUNNING",
+  "start_time": "2026-03-10T14:04:42.308111+00:00",
+  "end_time": null,
+  "params": {},
+  "metrics": {},
+  "artifacts": [],
+  "tags": {}
+}

@@ -1,0 +1,85 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Klassify – Docker Compose
+# Services: api | frontend | worker | redis
+# ──────────────────────────────────────────────────────────────────────────────
+
+version: "3.9"
+
+x-base: &base
+  build:
+    context: ..
+    dockerfile: deployment/Dockerfile
+  environment:
+    REDIS_URL: redis://redis:6379/0
+    CELERY_BROKER_URL: redis://redis:6379/0
+    CELERY_RESULT_BACKEND: redis://redis:6379/0
+    LOG_LEVEL: INFO
+    DEBUG: "false"
+  volumes:
+    - klassify_data:/app/data
+  depends_on:
+    redis:
+      condition: service_healthy
+  restart: unless-stopped
+
+services:
+
+  # ── Redis ──────────────────────────────────────────────────────────────────
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # ── FastAPI backend ─────────────────────────────────────────────────────────
+  api:
+    <<: *base
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000 --workers 2
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ── Streamlit frontend ──────────────────────────────────────────────────────
+  frontend:
+    <<: *base
+    command: streamlit run frontend/streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    ports:
+      - "8501:8501"
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+      API_BASE_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+
+  # ── Celery worker ───────────────────────────────────────────────────────────
+  worker:
+    <<: *base
+    command: celery -A backend.celery_worker worker --loglevel=info --concurrency=2
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+
+  # ── Celery Flower monitor (optional) ───────────────────────────────────────
+  flower:
+    <<: *base
+    command: celery -A backend.celery_worker flower --port=5555
+    ports:
+      - "5555:5555"
+    profiles:
+      - monitoring
+
+volumes:
+  klassify_data:

@@ -1,0 +1,27 @@
+{
+  "run_id": "53a03e737aa4",
+  "experiment": "default_experiment",
+  "model_key": "logistic_regression",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmp5xskbfye.csv",
+  "status": "FINISHED",
+  "start_time": "2026-03-10T14:12:13.584354+00:00",
+  "end_time": "2026-03-10T14:24:32.883921+00:00",
+  "params": {
+    "C": 100.0,
+    "solver": "lbfgs"
+  },
+  "metrics": {
+    "accuracy": 0.209756,
+    "precision": 0.191242,
+    "recall": 0.209756,
+    "f1": 0.195818,
+    "mcc": 0.188765,
+    "training_time_s": 1.314,
+    "inference_time_s": 0.000576,
+    "n_test_samples": 615,
+    "roc_auc": 0.929624,
+    "log_loss": 2.187311
+  },
+  "artifacts": [],
+  "tags": {}
+}

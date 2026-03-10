@@ -1,0 +1,28 @@
+{
+  "run_id": "7a8c57c6c350",
+  "experiment": "default_experiment",
+  "model_key": "gradient_boosting",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmpo4c3iavu.csv",
+  "status": "FINISHED",
+  "start_time": "2026-03-10T14:49:21.408397+00:00",
+  "end_time": "2026-03-10T14:49:32.559058+00:00",
+  "params": {
+    "learning_rate": 0.01,
+    "max_depth": 3,
+    "n_estimators": 50
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mcc": 1.0,
+    "training_time_s": 0.7118,
+    "inference_time_s": 0.001909,
+    "n_test_samples": 2000,
+    "roc_auc": 1.0,
+    "log_loss": 0.360625
+  },
+  "artifacts": [],
+  "tags": {}
+}

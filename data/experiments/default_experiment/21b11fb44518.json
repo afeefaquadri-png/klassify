@@ -1,0 +1,13 @@
+{
+  "run_id": "21b11fb44518",
+  "experiment": "default_experiment",
+  "model_key": "random_forest",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmp5xskbfye.csv",
+  "status": "FAILED",
+  "start_time": "2026-03-10T14:11:21.634895+00:00",
+  "end_time": "2026-03-10T14:11:21.683655+00:00",
+  "params": {},
+  "metrics": {},
+  "artifacts": [],
+  "tags": {}
+}

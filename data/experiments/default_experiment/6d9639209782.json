@@ -1,0 +1,39 @@
+{
+  "run_id": "6d9639209782",
+  "experiment": "default_experiment",
+  "model_key": "logistic_regression",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmp_dykaal_.csv",
+  "status": "FINISHED",
+  "start_time": "2026-03-10T14:02:34.080923+00:00",
+  "end_time": "2026-03-10T14:02:36.097385+00:00",
+  "params": {
+    "C": 1.0,
+    "class_weight": null,
+    "dual": false,
+    "fit_intercept": true,
+    "intercept_scaling": 1,
+    "l1_ratio": 0.0,
+    "max_iter": 1000,
+    "n_jobs": null,
+    "penalty": "deprecated",
+    "random_state": 42,
+    "solver": "lbfgs",
+    "tol": 0.0001,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "metrics": {
+    "accuracy": 0.068293,
+    "precision": 0.051464,
+    "recall": 0.068293,
+    "f1": 0.050276,
+    "mcc": 0.062696,
+    "training_time_s": 0.6338,
+    "inference_time_s": 0.001659,
+    "n_test_samples": 615,
+    "roc_auc": 0.883016,
+    "log_loss": 3.910839
+  },
+  "artifacts": [],
+  "tags": {}
+}

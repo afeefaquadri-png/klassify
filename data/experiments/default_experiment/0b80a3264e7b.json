@@ -1,0 +1,28 @@
+{
+  "run_id": "0b80a3264e7b",
+  "experiment": "default_experiment",
+  "model_key": "random_forest",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmphc8fxuh9.csv",
+  "status": "FINISHED",
+  "start_time": "2026-03-10T14:27:23.593963+00:00",
+  "end_time": "2026-03-10T14:27:35.717519+00:00",
+  "params": {
+    "max_depth": null,
+    "min_samples_split": 2,
+    "n_estimators": 50
+  },
+  "metrics": {
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mcc": 1.0,
+    "training_time_s": 0.1311,
+    "inference_time_s": 0.030083,
+    "n_test_samples": 2000,
+    "roc_auc": 1.0,
+    "log_loss": 0.009526
+  },
+  "artifacts": [],
+  "tags": {}
+}

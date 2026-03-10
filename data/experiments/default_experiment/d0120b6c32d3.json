@@ -1,0 +1,13 @@
+{
+  "run_id": "d0120b6c32d3",
+  "experiment": "default_experiment",
+  "model_key": "logistic_regression",
+  "dataset": "C:\\Users\\afeef\\AppData\\Local\\Temp\\tmp5xskbfye.csv",
+  "status": "FAILED",
+  "start_time": "2026-03-10T14:10:50.918017+00:00",
+  "end_time": "2026-03-10T14:10:50.954770+00:00",
+  "params": {},
+  "metrics": {},
+  "artifacts": [],
+  "tags": {}
+}

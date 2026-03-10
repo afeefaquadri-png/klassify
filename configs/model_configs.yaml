@@ -1,0 +1,158 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Klassify – Model Configuration Registry
+# Each entry defines default params and grid-search / random-search spaces.
+# ──────────────────────────────────────────────────────────────────────────────
+
+logistic_regression:
+  display_name: "Logistic Regression"
+  class: "sklearn.linear_model.LogisticRegression"
+  default_params:
+    C: 1.0
+    max_iter: 1000
+    solver: "lbfgs"
+    random_state: 42
+  param_grid:
+    C: [0.001, 0.01, 0.1, 1.0, 10.0, 100.0]
+    solver: ["lbfgs", "liblinear", "saga"]
+  param_distributions:
+    C: {dist: "loguniform", low: 0.001, high: 100}
+
+knn:
+  display_name: "K-Nearest Neighbours"
+  class: "sklearn.neighbors.KNeighborsClassifier"
+  default_params:
+    n_neighbors: 5
+    weights: "uniform"
+    metric: "minkowski"
+  param_grid:
+    n_neighbors: [3, 5, 7, 9, 11, 15]
+    weights: ["uniform", "distance"]
+    metric: ["minkowski", "euclidean", "manhattan"]
+  param_distributions:
+    n_neighbors: {dist: "randint", low: 3, high: 20}
+
+svm:
+  display_name: "Support Vector Machine"
+  class: "sklearn.svm.SVC"
+  default_params:
+    C: 1.0
+    kernel: "rbf"
+    probability: true
+    random_state: 42
+  param_grid:
+    C: [0.1, 1.0, 10.0, 100.0]
+    kernel: ["linear", "rbf", "poly"]
+    gamma: ["scale", "auto"]
+  param_distributions:
+    C: {dist: "loguniform", low: 0.01, high: 100}
+
+decision_tree:
+  display_name: "Decision Tree"
+  class: "sklearn.tree.DecisionTreeClassifier"
+  default_params:
+    max_depth: null
+    min_samples_split: 2
+    random_state: 42
+  param_grid:
+    max_depth: [3, 5, 7, 10, null]
+    min_samples_split: [2, 5, 10]
+    criterion: ["gini", "entropy"]
+  param_distributions:
+    max_depth: {dist: "randint", low: 2, high: 15}
+    min_samples_split: {dist: "randint", low: 2, high: 20}
+
+random_forest:
+  display_name: "Random Forest"
+  class: "sklearn.ensemble.RandomForestClassifier"
+  default_params:
+    n_estimators: 100
+    max_depth: null
+    random_state: 42
+    n_jobs: -1
+  param_grid:
+    n_estimators: [50, 100, 200, 300]
+    max_depth: [null, 5, 10, 15]
+    min_samples_split: [2, 5, 10]
+  param_distributions:
+    n_estimators: {dist: "randint", low: 50, high: 500}
+    max_depth: {dist: "randint", low: 3, high: 20}
+
+gradient_boosting:
+  display_name: "Gradient Boosting"
+  class: "sklearn.ensemble.GradientBoostingClassifier"
+  default_params:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 3
+    random_state: 42
+  param_grid:
+    n_estimators: [50, 100, 200]
+    learning_rate: [0.01, 0.05, 0.1, 0.2]
+    max_depth: [3, 5, 7]
+  param_distributions:
+    n_estimators: {dist: "randint", low: 50, high: 300}
+    learning_rate: {dist: "loguniform", low: 0.005, high: 0.5}
+
+xgboost:
+  display_name: "XGBoost"
+  class: "xgboost.XGBClassifier"
+  default_params:
+    n_estimators: 100
+    learning_rate: 0.1
+    max_depth: 6
+    use_label_encoder: false
+    eval_metric: "logloss"
+    random_state: 42
+    n_jobs: -1
+  param_grid:
+    n_estimators: [50, 100, 200]
+    learning_rate: [0.01, 0.1, 0.2]
+    max_depth: [3, 6, 9]
+  param_distributions:
+    n_estimators: {dist: "randint", low: 50, high: 300}
+    learning_rate: {dist: "loguniform", low: 0.005, high: 0.5}
+    max_depth: {dist: "randint", low: 2, high: 10}
+
+lightgbm:
+  display_name: "LightGBM"
+  class: "lightgbm.LGBMClassifier"
+  default_params:
+    n_estimators: 100
+    learning_rate: 0.1
+    num_leaves: 31
+    random_state: 42
+    n_jobs: -1
+    verbose: -1
+  param_grid:
+    n_estimators: [50, 100, 200]
+    learning_rate: [0.01, 0.05, 0.1]
+    num_leaves: [15, 31, 63]
+  param_distributions:
+    n_estimators: {dist: "randint", low: 50, high: 300}
+    learning_rate: {dist: "loguniform", low: 0.005, high: 0.3}
+    num_leaves: {dist: "randint", low: 10, high: 100}
+
+naive_bayes:
+  display_name: "Naive Bayes"
+  class: "sklearn.naive_bayes.GaussianNB"
+  default_params:
+    var_smoothing: 1.0e-9
+  param_grid:
+    var_smoothing: [1.0e-10, 1.0e-9, 1.0e-8, 1.0e-7]
+  param_distributions:
+    var_smoothing: {dist: "loguniform", low: 1.0e-11, high: 1.0e-6}
+
+mlp:
+  display_name: "Neural Network (MLP)"
+  class: "sklearn.neural_network.MLPClassifier"
+  default_params:
+    hidden_layer_sizes: [100, 50]
+    activation: "relu"
+    max_iter: 500
+    random_state: 42
+  param_grid:
+    hidden_layer_sizes: [[50], [100], [100, 50], [200, 100, 50]]
+    activation: ["relu", "tanh"]
+    alpha: [0.0001, 0.001, 0.01]
+  param_distributions:
+    alpha: {dist: "loguniform", low: 0.00001, high: 0.1}
