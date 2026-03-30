@@ -722,23 +722,6 @@ if page_key == "Home":
     )
     st.markdown(f'<div class="clf-grid">{pills}</div>', unsafe_allow_html=True)
 
-    st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
-
-    # ── Quick Start ───────────────────────────────────────────────────────────
-    st.markdown('<div class="sec-head">Quick Start</div>', unsafe_allow_html=True)
-    st.markdown("""
-    ```bash
-    # 1. Install dependencies
-    pip install -r requirements.txt
-
-    # 2. Launch the app
-    streamlit run klassify/frontend/streamlit_app.py
-
-    # 3. (Optional) Start the FastAPI backend
-    uvicorn klassify.backend.main:app --reload --port 8000
-    ```
-    """)
-
     st.markdown("""
     <div class="tip-box">
         <strong>Tip:</strong>
@@ -746,6 +729,8 @@ if page_key == "Home":
         through Dataset → Preprocessing → Training.
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("<div style='height:1rem'></div>", unsafe_allow_html=True)
 
     st.divider()
 
