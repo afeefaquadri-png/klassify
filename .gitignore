@@ -12,8 +12,8 @@ env/
 .env
 .env.*
 
-# Streamlit
-.streamlit/
+# Streamlit secrets (keep config.toml tracked)
+.streamlit/secrets.toml
 
 # Logs
 *.log
